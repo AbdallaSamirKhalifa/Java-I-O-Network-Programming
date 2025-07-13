@@ -1,12 +1,9 @@
 package rmi.rmiclient;
 
-import rmi.rmiinterfaces.ICalc;
-import rmi.rmiinterfaces.IHelloService;
-
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import com.sun.source.doctree.SeeTree;
+import rmi.rmiinterfaces.*;
+import java.rmi.*;
+import java.rmi.registry.*;
 
 public class Client {
     public static void main(String[] args) {
@@ -19,6 +16,7 @@ public class Client {
                 helloService(registry);
                 calcService(registry);
                 listingServices(registry);
+                employeeDBService(registry);
 
             }catch (NotBoundException | RemoteException e){
             System.out.println("NotBound Exception on the client: "+e);
@@ -35,7 +33,7 @@ public class Client {
         return null;
     }
     public static void calcService(Registry registry)throws RemoteException, NotBoundException{
-            ICalc calcService=(ICalc) registry.lookup("Calc");
+            CalcService calcService=(CalcService) registry.lookup("Calc");
 
             System.out.println("Addition: "+calcService.add(10,20));
             System.out.println("Subtract: "+calcService.subtract(10,5));
@@ -51,9 +49,29 @@ public class Client {
             System.out.println(service);
     }
     public static void helloService(Registry registry)throws RemoteException, NotBoundException{
-            IHelloService helloService=(IHelloService) registry.lookup("Hello");
+            HelloService helloService=(HelloService) registry.lookup("Hello");
             System.out.println(helloService.sendMessage("Remote message"));
 
 
     }
+    public static void employeeDBService(Registry registry)throws RemoteException, NotBoundException{
+        EmployeeService employeeService=(EmployeeService) registry.lookup("EmployeeDB");
+
+        employeeService.add(new Employee(1,"Abdalla"));
+        employeeService.add(new Employee(2,"Samir"));
+        employeeService.add(new Employee(3,"Saad"));
+        employeeService.add(new Employee(4,"Khalifa"));
+
+        System.out.println("getByID: "+employeeService.getById(1));
+        employeeService.update(new Employee(1,"Mohammed"));
+        System.out.println("getById, after update: "+employeeService.getById(1));
+        System.out.println("Listing Employees: ");
+        for (Employee employee:employeeService.getAllEmployees())
+            System.out.println(employee);
+
+        employeeService.delete(new Employee(1,"Mohammed"));
+        System.out.println("exists: "+employeeService.exists(1));
+    }
+
+
 }

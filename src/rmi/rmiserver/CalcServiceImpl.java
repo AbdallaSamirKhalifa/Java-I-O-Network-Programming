@@ -1,11 +1,11 @@
 package rmi.rmiserver;
 
-import rmi.rmiinterfaces.ICalc;
+import rmi.rmiinterfaces.CalcService;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class CalcServiceImpl extends UnicastRemoteObject implements ICalc {
+public class CalcServiceImpl extends UnicastRemoteObject implements CalcService {
     public CalcServiceImpl()throws RemoteException{}
     public int add(int num1,int num2){
         return num1+num2;
