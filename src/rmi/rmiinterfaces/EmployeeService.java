@@ -1,7 +1,6 @@
 package rmi.rmiinterfaces;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
+import java.rmi.*;
 import java.util.List;
 
 public interface EmployeeService extends Remote {

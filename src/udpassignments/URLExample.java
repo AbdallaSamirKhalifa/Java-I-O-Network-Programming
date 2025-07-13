@@ -1,8 +1,7 @@
 package udpassignments;
 
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.*;
 
 public class URLExample {

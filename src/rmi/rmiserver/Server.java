@@ -1,13 +1,8 @@
 package rmi.rmiserver;
 
-import rmi.rmiinterfaces.CalcService;
-import rmi.rmiinterfaces.Employee;
-import rmi.rmiinterfaces.EmployeeService;
-import rmi.rmiinterfaces.HelloService;
-
+import rmi.rmiinterfaces.*;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import java.rmi.registry.*;
 
 public class Server {
     public static void main(String[] args) {

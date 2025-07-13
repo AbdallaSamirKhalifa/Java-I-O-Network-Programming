@@ -1,8 +1,6 @@
 package rmi.rmiserver;
 
 import rmi.rmiinterfaces.HelloService;
-
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 

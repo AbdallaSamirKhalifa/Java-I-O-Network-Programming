@@ -1,7 +1,5 @@
 package rmi.rmiinterfaces;
 
-
-
 import java.io.Serializable;
 
 public class Employee implements Serializable {

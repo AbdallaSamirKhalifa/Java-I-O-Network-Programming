@@ -1,9 +1,6 @@
 package rmi.rmiserver;
 
-import rmi.rmiinterfaces.Employee;
-import rmi.rmiinterfaces.EmployeeService;
-
-import javax.xml.stream.FactoryConfigurationError;
+import rmi.rmiinterfaces.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;

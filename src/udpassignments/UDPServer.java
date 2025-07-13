@@ -1,8 +1,7 @@
 package udpassignments;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
+import java.net.*;
 
 public class UDPServer {
     public static void main(String[] args) {

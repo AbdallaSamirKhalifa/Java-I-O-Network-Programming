@@ -1,6 +1,5 @@
 package rmi.rmiclient;
 
-import com.sun.source.doctree.SeeTree;
 import rmi.rmiinterfaces.*;
 import java.rmi.*;
 import java.rmi.registry.*;
