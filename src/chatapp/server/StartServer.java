@@ -1,12 +1,8 @@
 package chatapp.server;
 
-import jdk.nashorn.api.tree.TryTree;
-
 import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.RemoteException;
+import java.rmi.*;
 import java.rmi.registry.LocateRegistry;
-import java.time.LocalDateTime;
 
 public class StartServer {
 

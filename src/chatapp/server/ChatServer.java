@@ -2,13 +2,14 @@ package chatapp.server;
 
 import chatapp.interfaces.*;
 
-import javax.swing.*;
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Vector;
 
 public class ChatServer extends UnicastRemoteObject implements ChatServerInt {
@@ -43,11 +44,14 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerInt {
     }
 
     private void logToFile(String message){
-        try (FileWriter writer=new FileWriter ("src/chatapp/server/logFile.text", true)){
-            writer.write(message);
+        try (FileChannel channelWriter=FileChannel.open
+                (Paths.get("src/chatapp/server/logFile.text"),
+                        StandardOpenOption.CREATE,StandardOpenOption.APPEND)){
+            int numberOfBytes=channelWriter.write(ByteBuffer.wrap(message.getBytes()));
         }catch (IOException e){
             System.out.println("Error on server logger: "+e);
         }
+
     }
 
 
